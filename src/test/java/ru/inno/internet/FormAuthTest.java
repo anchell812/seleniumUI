@@ -1,19 +1,22 @@
 package ru.inno.internet;
 
+import io.github.bonigarcia.seljup.SeleniumJupiter;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// https://bonigarcia.dev/webdrivermanager
+@ExtendWith(SeleniumJupiter.class)
 public class FormAuthTest {
 
+
     @Test
-    public void successLogin(){
+    public void successLogin(FirefoxDriver browser) {
         //1. зайти на страницу http://the-internet.herokuapp.com/login
-        WebDriver browser = new ChromeDriver();
         browser.get("http://the-internet.herokuapp.com/login");
 
         //2. ввести логин tomsmith
