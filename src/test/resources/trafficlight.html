@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic light</title>
+    <style>
+        .content-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #light {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            border: 1px solid lightslategrey;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="content-center">
+    <div id="light" class="content-center"></div>
+</div>
+
+<script>
+    const element = document.querySelector("#light");
+    const colors = {
+        "rgb(241, 151, 151)": "red",
+        "rgb(255, 240, 184)": "yellow",
+        "rgb(163, 217, 135)": "green"
+    }
+
+    let counter = 0;
+    setInterval(() => {
+        element.style["background-color"] = Object.keys(colors)[counter++ % Object.entries(colors).length];
+    }, 1000);
+
+    element.addEventListener('click', () => {
+        element.textContent = colors[element.style["background-color"]];
+    });
+</script>
+</body>
+</html>
